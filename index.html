@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Tiwari | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Base & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111;
+            color: #f1f1f1;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Hover Background Reveal --- */
+        .bg-hover-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('hover-bg.png'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            filter: brightness(0.6); 
+            transition: opacity 0.4s ease-in-out;
+            z-index: 1; 
+            pointer-events: none;
+        }
+
+        section {
+            padding: 100px 10%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative; 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #fff;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 90%;
+            left: 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+        .nav-links { list-style: none; display: flex; gap: 25px; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links a:hover { color: #fff; }
+        .social-icons { display: flex; gap: 15px; font-size: 1.3rem; }
+        .social-icons a { color: #ddd; transition: color 0.3s; text-decoration: none; }
+        .social-icons a:hover { color: #fff; }
+
+        /* --- Hero Section --- */
+        #home {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: transparent;
+            z-index: 2;
+        }
+        
+        .bg-text {
+            position: absolute;
+            font-size: 11vw;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 2; 
+            pointer-events: none; 
+            user-select: none;
+            white-space: nowrap;
+            text-align: center;
+            width: 100%;
+        }
+
+        .character-container {
+            position: relative;
+            z-index: 5; 
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .character {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.4s ease-in-out;
+        }
+
+        .action-buttons {
+            position: absolute;
+            bottom: 40px;
+            left: 10%;
+            display: flex;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .btn {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        /* --- About Section --- */
+        #about { background-color: #d1d1d1; color: #111; z-index: 10; }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .about-image { width: 35%; border-radius: 10px; }
+        .about-text { width: 65%; font-size: 1.1rem; }
+        .about-text p { margin-bottom: 15px; }
+        .skills-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            font-size: 3rem;
+            color: #333;
+        }
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .skill-item i { font-size: 3rem; margin-bottom: 10px; }
+
+        /* --- Experience Section --- */
+        #experience { background-color: #e5e5e5; color: #111; z-index: 10; }
+        .experience-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .experience-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-left: 6px solid #333;
+            transition: transform 0.3s;
+        }
+        .experience-card:hover { transform: translateY(-5px); }
+        .experience-card h3 { margin-bottom: 5px; font-size: 1.6rem; color: #111; }
+        .experience-card h4 { color: #444; margin-bottom: 10px; font-weight: 600; font-size: 1.1rem;}
+        .experience-date { font-size: 0.9rem; color: #666; margin-bottom: 15px; display: inline-block; font-weight: bold; background: #eee; padding: 5px 12px; border-radius: 20px;}
+        .experience-card ul { padding-left: 20px; color: #333; line-height: 1.8; }
+        .experience-card ul li { margin-bottom: 10px; }
+
+        /* --- Projects Section --- */
+        #projects { background-color: #d1d1d1; color: #111; z-index: 10; }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .project-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
+        .tag { background: #333; color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; }
+        .project-links { display: flex; gap: 10px; margin-top: 20px; }
+        .project-links .btn { border-color: #333; color: #333; }
+        .project-links .btn:hover { background: rgba(0,0,0,0.05); }
+
+        /* --- Expertise Section --- */
+        #services { background-color: #e5e5e5; color: #111; z-index: 10; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .service-card {
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .service-card i { font-size: 3rem; margin-bottom: 20px; color: #333; }
+
+        /* --- Contact Section --- */
+        #contact { background-color: #222; color: #fff; z-index: 10; }
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            background: #1a1a1a;
+            padding: 50px;
+            border-radius: 15px;
+        }
+        .contact-info { width: 40%; }
+        .contact-info p { margin: 15px 0; display: flex; align-items: center; gap: 15px; font-size: 1.1rem;}
+        .contact-form { width: 60%; display: flex; flex-direction: column; gap: 20px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            background: #333;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .contact-form button {
+            padding: 15px;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .contact-form button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The background image that appears on hover -->
+    <div class="bg-hover-image" id="hoverBg"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><strong>Abhinav</strong></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Expertise</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="social-icons">
+            <!-- Updated actual GitHub and LinkedIn URLs -->
+            <a href="https://github.com/Tiwari-Abhinav" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/abhinav-tiwari06/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </nav>
+
+    <!-- Home/Hero Section -->
+    <section id="home">
+        <div class="bg-text">Hi! I'm Abhinav</div>
+        
+        <div class="character-container">
+            <img src="character.png" alt="Character" class="character" id="mainCharacter">
+        </div>
+        
+        <div class="action-buttons">
+            <a href="#contact" class="btn">Contact</a>
+            <a href="#about" class="btn">Who I'm</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <img src="aboutme.jpg" alt="Abhinav Tiwari" class="about-image">
+            <div class="about-text">
+                <p>Hi, I'm Abhinav Tiwari, a final-year B.Tech student in Electronics and Communication Engineering with a strong interest in Artificial Intelligence, Large Language Models (LLMs), and software engineering. I specialize in building AI-powered applications using Python, REST APIs, prompt engineering, and workflow automation. My experience includes designing intelligent systems, integrating AI models into real-world applications, and developing scalable backend solutions that improve efficiency and user experience.</strong>.</p>
+                <p>During my internship at Ethara AI, I gained hands-on experience working with production-grade LLM workflows, AI-assisted automation, and backend development. I strengthened my skills in prompt optimization, API integration, and building reliable AI-driven solutions while collaborating in a professional development environment. I enjoy solving complex problems, learning emerging technologies, and creating innovative applications that combine AI with practical software engineering. I am eager to contribute to impactful projects where I can apply my technical expertise, adaptability, and passion for developing intelligent, scalable solutions..</p>
+            </div>
+        </div>
+        <div class="skills-row">
+            <div class="skill-item"><i class="fa-brands fa-python"></i>Python</div>
+            <div class="skill-item"><i class="fa-brands fa-java"></i>Java</div>
+            <div class="skill-item"><i class="fa-solid fa-database"></i>SQL / FAISS</div>
+            <div class="skill-item"><i class="fa-brands fa-git-alt"></i>Git</div>
+            <div class="skill-item"><i class="fa-solid fa-robot"></i>AI / LLMs</div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-container">
+            
+            <div class="experience-card">
+                <h3>LLM Intern</h3>
+                <h4>Ethara AI | Gurgaon, Haryana</h4>
+                <span class="experience-date">01/2026 - 05/2026</span>
+                <ul>
+                    <li>Built and optimized LLM-powered workflows for production use cases using prompt engineering and automated validation pipelines in Python.</li>
+                    <li>Worked with AI automation systems, API-driven integrations, and structured evaluation frameworks to improve response quality and reliability.</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Telecom Intern</h3>
+                <h4>Power Grid Corporation of India | Lucknow, Uttar Pradesh</h4>
+                <span class="experience-date">06/2025 - 07/2025</span>
+                <ul>
+                    <li>Assisted in monitoring and troubleshooting communication networks and optical fiber systems.</li>
+                    <li>Analyzed network routing and communication protocols to support operational reliability.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="project-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>AI Support Agent</h3>
+                <p>An LLM-powered support agent for automated ticket classification, routing, and escalation using modular AI workflows and NLP pipelines. Verified via comprehensive unit testing and end-to-end debugging.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">LLMs</span>
+                    <span class="tag">Modular Pipelines</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tiwari-Abhinav" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Source Code</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <h3>Facial Recognition System</h3>
+                <p>A real-time facial recognition system for automated attendance. Integrates data ingestion, embedding generation, and live inference, with systematic testing to mitigate false positives from environmental noise.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">dlib</span>
+                    <span class="tag">NumPy</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tiwari-Abhinav" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Source Code</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="services">
+        <h2 class="section-title">Areas of Expertise</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-brain"></i>
+                <h3>AI Engineering & LLMs</h3>
+                <p>Prompt Engineering, OpenAI APIs, AI Agents, RAG Fundamentals, and LangChain integration.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Backend Development</h3>
+                <p>Building robust systems with Python, C++, Java, SQL, and Agile SDLC methodologies.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Machine Learning</h3>
+                <p>Feature Engineering, Model Training, Model Evaluation, and working with Vector Databases.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p><i class="fa-solid fa-envelope"></i> abhinavt464@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91-9140326618</p>
+                <p><i class="fa-solid fa-location-dot"></i> Lucknow, Uttar Pradesh</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Script for the Hover Effect -->
+    <script>
+        const characterImage = document.getElementById('mainCharacter');
+        const hoverBackground = document.getElementById('hoverBg');
+
+        // Show background and hide character on mouse enter
+        characterImage.addEventListener('mouseenter', () => {
+            hoverBackground.style.opacity = '1';
+            characterImage.style.opacity = '0';
+        });
+
+        // Restore everything on mouse leave
+        characterImage.addEventListener('mouseleave', () => {
+            hoverBackground.style.opacity = '0';
+            characterImage.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
