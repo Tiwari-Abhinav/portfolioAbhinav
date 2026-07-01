@@ -139,6 +139,7 @@
             border-radius: 8px;
             text-decoration: none;
             transition: 0.3s ease;
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -242,33 +243,41 @@
             background: #1a1a1a;
             padding: 50px;
             border-radius: 15px;
+            align-items: center;
         }
         .contact-info { width: 40%; }
         .contact-info p { margin: 15px 0; display: flex; align-items: center; gap: 15px; font-size: 1.1rem;}
-        .contact-form { width: 60%; display: flex; flex-direction: column; gap: 20px; }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            border-radius: 8px;
-            border: none;
+        
+        .contact-funny-message {
+            width: 60%;
             background: #333;
-            color: #fff;
-            font-size: 1rem;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .contact-form button {
-            padding: 15px;
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-            font-size: 1rem;
+        .contact-funny-message i.emoji {
+            font-size: 4rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
         }
-        .contact-form button:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .contact-funny-message h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
+        .contact-funny-message p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+        .contact-funny-message .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -288,7 +297,6 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="social-icons">
-            <!-- Updated actual GitHub and LinkedIn URLs -->
             <a href="https://github.com/Tiwari-Abhinav" target="_blank"><i class="fa-brands fa-github"></i></a>
             <a href="https://www.linkedin.com/in/abhinav-tiwari06/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         </div>
@@ -304,7 +312,8 @@
         
         <div class="action-buttons">
             <a href="#contact" class="btn">Contact</a>
-            <a href="#about" class="btn">Who I'm</a>
+            <!-- Added Download Resume Button linking directly to the PDF -->
+            <a href="Abhinav_Tiwari_.pdf" target="_blank" class="btn"><i class="fa-solid fa-file-pdf"></i> CV</a>
         </div>
     </section>
 
@@ -314,8 +323,8 @@
         <div class="about-content">
             <img src="aboutme.jpg" alt="Abhinav Tiwari" class="about-image">
             <div class="about-text">
-                <p>Hi, I'm Abhinav Tiwari, a final-year B.Tech student in Electronics and Communication Engineering with a strong interest in Artificial Intelligence, Large Language Models (LLMs), and software engineering. I specialize in building AI-powered applications using Python, REST APIs, prompt engineering, and workflow automation. My experience includes designing intelligent systems, integrating AI models into real-world applications, and developing scalable backend solutions that improve efficiency and user experience.</strong>.</p>
-                <p>During my internship at Ethara AI, I gained hands-on experience working with production-grade LLM workflows, AI-assisted automation, and backend development. I strengthened my skills in prompt optimization, API integration, and building reliable AI-driven solutions while collaborating in a professional development environment. I enjoy solving complex problems, learning emerging technologies, and creating innovative applications that combine AI with practical software engineering. I am eager to contribute to impactful projects where I can apply my technical expertise, adaptability, and passion for developing intelligent, scalable solutions..</p>
+                <p>Hi, I am Abhinav Tiwari, a final-year B.Tech student in Electronics and Communication Engineering with a strong interest in Artificial Intelligence, software engineering, and backend development. My experience includes building AI-powered applications using Python, REST APIs, prompt engineering, workflow automation, and Large Language Model (LLM) technologies. I enjoy designing scalable solutions that combine intelligent automation with clean, efficient software architecture to solve practical business problem</strong>.</p>
+                <p>During my time at Ethara AI, I gained hands-on experience developing production-grade LLM workflows and AI-assisted systems, strengthening my understanding of modern AI engineering practices. I have worked on integrating APIs, automating complex processes, and creating reliable backend solutions that enhance productivity and user experience. I am passionate about continuous learning and enjoy exploring emerging AI technologies to build innovative, impactful applications. My goal is to contribute to teams developing intelligent, scalable software while expanding my expertise in AI engineering and full-stack system design.</p>
             </div>
         </div>
         <div class="skills-row">
@@ -360,7 +369,6 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="project-grid">
             
-            <!-- Project 1 -->
             <div class="project-card">
                 <h3>AI Support Agent</h3>
                 <p>An LLM-powered support agent for automated ticket classification, routing, and escalation using modular AI workflows and NLP pipelines. Verified via comprehensive unit testing and end-to-end debugging.</p>
@@ -375,7 +383,6 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
             <div class="project-card">
                 <h3>Facial Recognition System</h3>
                 <p>A real-time facial recognition system for automated attendance. Integrates data ingestion, embedding generation, and live inference, with systematic testing to mitigate false positives from environmental noise.</p>
@@ -383,6 +390,33 @@
                     <span class="tag">Python</span>
                     <span class="tag">Flask</span>
                     <span class="tag">dlib</span>
+                    <span class="tag">NumPy</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tiwari-Abhinav" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Source Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>NexaLife</h3>
+                <p>Your Futuristic Health & Time Companion NexaLife is a forward-thinking web application prototype designed for a future where personal wellness and time management are seamlessly integrated. Built for a hackathon.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">LLMs</span>
+                    
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Tiwari-Abhinav" target="_blank" class="btn"><i class="fa-brands fa-github"></i> Source Code</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>StyleAI-Fashion-Recommendation-System</h3>
+                <p>StyleAI is a multimodal fashion assistant that recommends complete outfits tailored to user intent, It combines computer vision, retrieval augmented recommendation, and generative AI to produce polished outfit suggestions from a curated product inventory.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">Streamlit</span>
                     <span class="tag">NumPy</span>
                 </div>
                 <div class="project-links">
@@ -425,12 +459,18 @@
                 <p><i class="fa-solid fa-phone"></i> +91-9140326618</p>
                 <p><i class="fa-solid fa-location-dot"></i> Lucknow, Uttar Pradesh</p>
             </div>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            
+            <!-- Replaced the functional form with the funny message -->
+            <div class="contact-funny-message">
+                <i class="fa-solid fa-face-grin-sweat emoji"></i>
+                <h3>Oops! The Backend is on Strike 🛑</h3>
+                <p>My contact form's server is currently taking a well-deserved coffee break. Since it won't actually send anything right now, please drop me a direct email or connect with me on LinkedIn. I promise I reply much faster than this form does!</p>
+                <div class="btn-group">
+                    <a href="mailto:abhinavt464@gmail.com" class="btn"><i class="fa-solid fa-paper-plane"></i> Email Me</a>
+                    <a href="https://www.linkedin.com/in/abhinav-tiwari06/" target="_blank" class="btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
